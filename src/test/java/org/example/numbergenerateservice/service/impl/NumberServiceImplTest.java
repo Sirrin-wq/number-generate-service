@@ -21,11 +21,11 @@ class NumberServiceImplTest {
     @Mock
     private NumberRepository repository;
     @InjectMocks
-    private NumberService service;
+    private NumberServiceImpl service;
 
     @Test
     void testGenerateUniqueNumber() {
-        GeneratedNumberEntity mockEntity = new GeneratedNumberEntity("1", "ABCDE20241212", LocalDateTime.now());
+        GeneratedNumberEntity mockEntity = new GeneratedNumberEntity("1", "1111120241212", LocalDateTime.now());
         when(repository.save(any())).thenReturn(mockEntity);
 
         GeneratedNumberEntity result = service.generate();
