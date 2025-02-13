@@ -1,0 +1,20 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  number-generate-service:
+    image: number-generate-service:latest
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    environment:
+      SPRING_DATA_MONGODB_HOST: mongodb
+
+volumes:
+  mongodb_data:
